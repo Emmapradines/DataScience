@@ -1,0 +1,41 @@
+# Proyecto III - Curso de Data Science (Coderhouse)
+
+**Alumno:** Emmanuel Pradines  
+**Fecha:** 22/07/2025  
+
+---
+
+##Objetivo general
+
+Desarrollar un modelo que permita predecir si una carrera universitaria pertenece a la gestión estatal o privada, utilizando información como provincia, localidad, modalidad de cursada, duración y temática. La idea es generar un insumo que pueda servir para pensar dónde conviene abrir nuevas instituciones según las tendencias detectadas.
+
+---
+##Estructura del proyecto
+
+.
+├── carreras_universitarias.csv 
+├── ProyectoParteIII+Pradines.ipynb 
+└── README.md 
+
+##Metodología
+
+1. **Limpieza y preprocesamiento del dataset:** se eliminaron duplicados, se escalaron variables numéricas y se codificaron categóricas con OneHotEncoding.
+2. **Análisis exploratorio:** se revisaron tipos de datos, cantidad de categorías, y distribución general.
+3. **Reducción de dimensionalidad:** se aplicaron técnicas como chi² y ranking por importancia de Random Forest para seleccionar las variables más relevantes.
+4. **Entrenamiento del modelo:** se utilizó `RandomForestClassifier` sobre los 10 mejores features, con división 70/30 y validación cruzada de 5 folds.
+5. **Evaluación:** se calcularon métricas como accuracy, precision, recall, matriz de confusión y análisis por clase.
+6. **Análisis territorial extra:** se identificaron las localidades con mayor y menor concentración de carreras estatales.
+
+---
+
+##Resultados obtenidos
+
+- El modelo logró una precisión promedio en validación cruzada de 78.79%.
+- El desempeño general fue sólido, con mejoras posibles en la detección de carreras privadas.
+- Las variables más importantes para la predicción fueron:
+  ['Duración', 'Localidad_Ciudad Autonoma de Buenos Aires', 'Provincia_Ciudad Autonoma de Buenos Aires', 'Temática_Diseño', 'Temática_Medios', 'Nivel_Posgrado', 'Nivel_Grado', 'Nivel_Pregrado', 'Temática_Música', 'Localidad_Moron']
+- Localidad con más universidades públicas: 'Ciudad Autonoma de Buenos Aires' (132 carreras)
+- Localidad con menos universidades públicas: 'San Nicolas' (1 carrera/s)
+- Para mejorar el recall en privadas, se sugiere explorar balanceo de clases y nuevos modelos.
+
+---
